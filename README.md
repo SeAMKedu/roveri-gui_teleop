@@ -2,7 +2,7 @@
 
 # GUI Teleop
 
-Graafisen käyttöliittymän omaava sovellus TurtleBot 4:n etäohjaamiseen ROS2-viestien avulla
+Graafisen käyttöliittymän omaava sovellus TurtleBot 4:n etäohjaamiseen ROS2-viestien avulla.
 
 ## TurtleBot 4
 
@@ -21,11 +21,39 @@ Oikeassa alanurkassa on toiminnot TurtleBotin käskyttämiseen latausasemaan (*D
 
 ![gui](/images/gui.png)
 
-## Sovelluksen ajaminen
+## Ohjelmistoriippuvuudet
 
-Sovellus käynnistyy alla olevalla komennoilla.
+Sovellus on kehitty käyttämällä ROS2:n Humble-versiota.
+
+Asenna tarvittavat TurtleBot 4 -ohjelmistopaketit:
+[https://turtlebot.github.io/turtlebot4-user-manual/software/turtlebot4_common.html](https://turtlebot.github.io/turtlebot4-user-manual/software/turtlebot4_common.html)
+
+Sovellus käyttää alla listattuja Python-paketteja:
+* [customtkinter](https://pypi.org/project/customtkinter/) graafinen käyttöliittymä
+* [opencv](https://pypi.org/project/opencv-python/) videokuvan käsittely
+* [pillow](https://pypi.org/project/pillow/) kuvan käsittely
+
+Lisäksi tarvitaan [cv_bridge](https://index.ros.org/p/cv_bridge/)-paketti, joka muuntaa ROS-kuvaviestit OpenCV:n käyttämään formaattiin.
+
+
+## Sovelluksen asennus ja ajaminen
+
+Lataa ensin sovelluksen lähdekoodi ROS2 workspace -kansion *src*-alikansioon.
 ```
-$ cd myROS2workspace
+$ cd myROS2workspace/src/
+$ git clone https://github.com/SeAMKedu/roveri-gui_teleop.git
+```
+
+Nimeä sovelluksen kansio uudestaan: *roveri-gui_teleop* -> *gui_teleop*.
+
+Siirry ROS2 workspace -kansion juureen ja käännä sovellus *colcon*-työkalulla:
+```
+$ cd ..
+$ colcon build --packages-select gui_teleop
+```
+
+Sovellus voidaan nyt käynnistää alla olevilla komennoilla.
+```
 $ source install/local_setup.bash
 $ ros2 run gui_teleop gui_app
 ```
