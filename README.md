@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/813581462.svg)](https://zenodo.org/doi/10.5281/zenodo.11609797)
+
 ![roveri](/images/roveri.svg)
 
 # GUI Teleop
